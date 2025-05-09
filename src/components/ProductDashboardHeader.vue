@@ -157,6 +157,9 @@ export default {
 
           p {
             font-family: $font-family-primary;
+            color: $primary-color;
+            font-size: 14px;
+            line-height: 20px;
           }
         }
       }

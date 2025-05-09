@@ -38,7 +38,9 @@
         <tbody>
           <tr v-for="product in sortedFilteredProducts" :key="product.id">
             <td>{{ product.id }}</td>
-            <td>Status</td>
+            <td>
+              <StatusBadge :text="'Status'" :badgeColor="getRandomColor()" />
+            </td>
             <td>{{ product.quantity }}</td>
             <td
               :aria-label="`Product: ${product.product}, Serial: ${product.serial}`"
@@ -57,6 +59,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import StatusBadge from "./StatusBadge.vue";
 
 // Props
 const props = defineProps({
@@ -126,6 +129,15 @@ const sortedFilteredProducts = computed(() => {
 });
 
 const shownCount = computed(() => sortedFilteredProducts.value.length);
+
+// Array of colors
+const colors = ["red", "green", "yellow", "violet"];
+
+// Function to get a random color
+const getRandomColor = () => {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
 </script>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
   <div id="products-table">
     <div class="product-count">
       <h3>Products</h3>
-      <span>count</span>
+      <span>{{ shownCount }} of {{ totalResults }} results</span>
     </div>
 
     <!-- Products-table-wrapper -->
@@ -68,7 +68,6 @@ const fetchProductsData = async () => {
   }
 };
 
-console.log(props);
 onMounted(fetchProductsData);
 
 // Computed values
@@ -104,6 +103,21 @@ const shownCount = computed(() => filteredProducts.value.length);
   .product-count {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 400;
+      font-family: $font-family-secondary;
+      color: #808080;
+    }
   }
 
   .products-table-wrapper {

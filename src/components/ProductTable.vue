@@ -56,8 +56,12 @@
               :aria-label="`Product: ${product.product}, Serial: ${product.serial}`"
               class="product-name-content"
             >
-              <p class="product-name">{{ product.product }}</p>
-              <p class="serial">{{ product.serial }}</p>
+              <p class="product-name" @click="toggleShowModal">
+                {{ product.product }}
+              </p>
+              <p class="serial">
+                {{ product.serial }}
+              </p>
             </td>
             <td class="price-body">${{ product.total }}</td>
           </tr>
@@ -65,12 +69,21 @@
       </table>
     </div>
     <!-- Products-table-wrapper end-->
+
+    <!-- Modal -->
+    <Modal
+      v-if="showModal"
+      @close="toggleModal"
+      header="Product Details"
+      content="More info about the selected product."
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import StatusBadge from "./StatusBadge.vue";
+import Modal from "./Modal.vue";
 
 // Props
 const props = defineProps({
@@ -85,6 +98,7 @@ const products = ref([]);
 const totalResults = ref(0);
 const sortBy = ref(null); // field name
 const sortOrder = ref("asc"); // 'asc' or 'desc'
+let showModal = ref(false);
 
 // Fetch products
 const fetchProductsData = async () => {
@@ -111,6 +125,11 @@ const toggleSort = (field) => {
     sortBy.value = field;
     sortOrder.value = "asc";
   }
+};
+
+const toggleModal = () => {
+  showModal.value = !showModal.value;
+  console.log("showModel", showModal);
 };
 
 // Computed values

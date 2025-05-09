@@ -10,15 +10,33 @@
       <table>
         <thead>
           <tr>
-            <th class="product-id">ID</th>
+            <th
+              class="product-id"
+              @click="toggleSort('id')"
+              role="button"
+              tabindex="0"
+            >
+              ID
+            </th>
             <th>Status</th>
-            <th>Quantity</th>
-            <th>Product Name</th>
-            <th class="price-heading">Prices</th>
+            <th @click="toggleSort('quantity')" role="button" tabindex="0">
+              Quantity
+            </th>
+            <th @click="toggleSort('product')" role="button" tabindex="0">
+              Product Name
+            </th>
+            <th
+              class="price-heading"
+              @click="toggleSort('total')"
+              role="button"
+              tabindex="0"
+            >
+              Prices
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in filteredProducts" :key="product.id">
+          <tr v-for="product in sortedFilteredProducts" :key="product.id">
             <td>{{ product.id }}</td>
             <td>Status</td>
             <td>{{ product.quantity }}</td>
@@ -51,6 +69,8 @@ const props = defineProps({
 // Data
 const products = ref([]);
 const totalResults = ref(0);
+const sortBy = ref(null); // field name
+const sortOrder = ref("asc"); // 'asc' or 'desc'
 
 // Fetch products
 const fetchProductsData = async () => {
@@ -70,19 +90,42 @@ const fetchProductsData = async () => {
 
 onMounted(fetchProductsData);
 
+const toggleSort = (field) => {
+  if (sortBy.value === field) {
+    sortOrder.value = sortOrder.value === "asc" ? "desc" : "asc";
+  } else {
+    sortBy.value = field;
+    sortOrder.value = "asc";
+  }
+};
+
 // Computed values
-const filteredProducts = computed(() =>
-  products.value.filter((p) => {
-    const searchTerm = props.search.toLowerCase();
-    return (
-      p.product.toLowerCase().includes(searchTerm) ||
-      p.id.toString().includes(searchTerm) ||
-      p.total.toString().includes(searchTerm) ||
-      p.quantity.toString().includes(searchTerm)
-    );
-  })
-);
-const shownCount = computed(() => filteredProducts.value.length);
+const sortedFilteredProducts = computed(() => {
+  const searchTerm = props.search.toLowerCase();
+
+  let filtered = products.value.filter((p) =>
+    `${p.product} ${p.id} ${p.total} ${p.quantity}`
+      .toLowerCase()
+      .includes(searchTerm)
+  );
+
+  if (!sortBy.value) return filtered;
+
+  return filtered.sort((a, b) => {
+    let valA = a[sortBy.value];
+    let valB = b[sortBy.value];
+
+    // Handle strings and numbers
+    if (typeof valA === "string") valA = valA.toLowerCase();
+    if (typeof valB === "string") valB = valB.toLowerCase();
+
+    if (valA < valB) return sortOrder.value === "asc" ? -1 : 1;
+    if (valA > valB) return sortOrder.value === "asc" ? 1 : -1;
+    return 0;
+  });
+});
+
+const shownCount = computed(() => sortedFilteredProducts.value.length);
 </script>
 
 <style lang="scss">

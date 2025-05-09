@@ -22,12 +22,12 @@
             type="text"
             name="search"
             class="search-input"
+            v-model="searchInput"
             placeholder="Search"
-            v-model="search"
             aria-label="search"
           />
           <img class="search-icon" src="../assets/images/search.svg" />
-          <button type="search">Search</button>
+          <button type="button" @click="emitSearch">Search</button>
           <!-- <p>{{ search }}</p> -->
         </div>
 
@@ -52,41 +52,49 @@
           type="text"
           name="search"
           class="search-input"
+          v-model="searchInput"
           placeholder="Search"
-          v-model="search"
           aria-label="search"
         />
         <img class="search-icon" src="../assets/images/search.svg" />
         <!-- <p>{{ search }}</p> -->
       </div>
-      <button type="button">Search</button>
+      <button type="button" @click="emitSearch">Search</button>
     </div>
     <!-- Mobile Search Container END -->
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-export default {
-  setup() {
-    let search = ref("");
-    const menuOpen = ref(false);
-    const isMobile = ref(window.innerWidth <= 768);
 
-    const handleResize = () => {
-      isMobile.value = window.innerWidth <= 768;
-    };
-
-    onMounted(() => window.addEventListener("resize", handleResize));
-    onUnmounted(() => window.removeEventListener("resize", handleResize));
-
-    const toggleMenu = () => {
-      menuOpen.value = !menuOpen.value;
-    };
-
-    return { search, toggleMenu, menuOpen, isMobile };
+const props = defineProps({
+  search: {
+    type: String,
+    default: "",
   },
+});
+
+const emit = defineEmits(["update:search"]);
+
+const searchInput = ref(props.search);
+const menuOpen = ref(false);
+const isMobile = ref(window.innerWidth <= 768);
+
+const toggleMenu = () => {
+  menuOpen.value = !menuOpen.value;
 };
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth <= 768;
+};
+
+const emitSearch = () => {
+  emit("update:search", searchInput.value);
+};
+
+onMounted(() => window.addEventListener("resize", handleResize));
+onUnmounted(() => window.removeEventListener("resize", handleResize));
 </script>
 
 <style lang="scss">

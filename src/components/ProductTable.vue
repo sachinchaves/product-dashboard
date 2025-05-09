@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in products" :key="product.id">
+          <tr v-for="product in filteredProducts" :key="product.id">
             <td>{{ product.id }}</td>
             <td>Status</td>
             <td>{{ product.quantity }}</td>
@@ -28,7 +28,7 @@
               <p class="product-name">{{ product.product }}</p>
               <p class="serial">{{ product.serial }}</p>
             </td>
-            <td class="price-body">$ {{ product.total }}</td>
+            <td class="price-body">${{ product.total }}</td>
           </tr>
         </tbody>
       </table>
@@ -37,36 +37,53 @@
   </div>
 </template>
 
-<script>
-import { ref, onMounted } from "vue";
+<script setup>
+import { ref, computed, onMounted } from "vue";
 
-export default {
-  setup() {
-    let products = ref(null);
-
-    let fetchProductsData = async () => {
-      try {
-        let response = await fetch("http://localhost:3000/products");
-
-        console.log("response", response);
-
-        if (!response.ok) {
-          throw new Error("Error fetching data - " + response.status);
-        }
-
-        products.value = await response.json();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    onMounted(fetchProductsData);
-
-    console.log(products);
-
-    return { products };
+// Props
+const props = defineProps({
+  search: {
+    type: String,
+    default: "",
   },
+});
+
+// Data
+const products = ref([]);
+const totalResults = ref(0);
+
+// Fetch products
+const fetchProductsData = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/products");
+    if (!response.ok) {
+      throw new Error("Error fetching data - " + response.status);
+    }
+
+    const data = await response.json();
+    products.value = data;
+    totalResults.value = data.length;
+  } catch (error) {
+    console.error(error);
+  }
 };
+
+console.log(props);
+onMounted(fetchProductsData);
+
+// Computed values
+const filteredProducts = computed(() =>
+  products.value.filter((p) => {
+    const searchTerm = props.search.toLowerCase();
+    return (
+      p.product.toLowerCase().includes(searchTerm) ||
+      p.id.toString().includes(searchTerm) ||
+      p.total.toString().includes(searchTerm) ||
+      p.quantity.toString().includes(searchTerm)
+    );
+  })
+);
+const shownCount = computed(() => filteredProducts.value.length);
 </script>
 
 <style lang="scss">

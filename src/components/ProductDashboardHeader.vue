@@ -184,6 +184,8 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
     @media only screen and (max-width: 768px) {
       flex-direction: column;
       padding-top: 40px;
+      padding-left: 25px;
+      padding-right: 25px;
     }
   }
 
@@ -243,6 +245,11 @@ onUnmounted(() => window.removeEventListener("resize", handleResize));
         margin-top: 16px;
       }
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
 </style>

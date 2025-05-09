@@ -18,11 +18,21 @@
             >
               ID
             </th>
-            <th>Status</th>
-            <th @click="toggleSort('quantity')" role="button" tabindex="0">
+            <th class="product-status-heading">Status</th>
+            <th
+              @click="toggleSort('quantity')"
+              role="button"
+              tabindex="0"
+              class="product-quantity-heading"
+            >
               Quantity
             </th>
-            <th @click="toggleSort('product')" role="button" tabindex="0">
+            <th
+              @click="toggleSort('product')"
+              role="button"
+              tabindex="0"
+              class="product-name-heading"
+            >
               Product Name
             </th>
             <th
@@ -37,13 +47,14 @@
         </thead>
         <tbody>
           <tr v-for="product in sortedFilteredProducts" :key="product.id">
-            <td>{{ product.id }}</td>
-            <td>
+            <td class="product-id-content">{{ product.id }}</td>
+            <td class="product-status-content">
               <StatusBadge :text="'Status'" :badgeColor="getRandomColor()" />
             </td>
-            <td>{{ product.quantity }}</td>
+            <td class="product-quantity-content">{{ product.quantity }}</td>
             <td
               :aria-label="`Product: ${product.product}, Serial: ${product.serial}`"
+              class="product-name-content"
             >
               <p class="product-name">{{ product.product }}</p>
               <p class="serial">{{ product.serial }}</p>
@@ -145,6 +156,8 @@ const getRandomColor = () => {
   max-width: 1184px;
   margin: 0 auto;
   margin-top: 76px;
+  padding-left: 25px;
+  padding-right: 25px;
 
   h3 {
     text-align: left;
@@ -223,6 +236,19 @@ const getRandomColor = () => {
           .price-body {
             border-left: 1px solid #e4e4ef;
           }
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        .product-id,
+        .product-status-heading,
+        .product-quantity-heading,
+        .price-heading,
+        .product-id-content,
+        .product-status-content,
+        .product-quantity-content,
+        .price-body {
+          display: none;
         }
       }
     }

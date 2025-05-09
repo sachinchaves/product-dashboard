@@ -172,6 +172,7 @@ export default {
     // Media query for header-wrapper
     @media only screen and (max-width: 768px) {
       flex-direction: column;
+      padding-top: 40px;
     }
   }
 

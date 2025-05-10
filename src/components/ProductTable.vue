@@ -49,7 +49,12 @@
           <tr v-for="product in sortedFilteredProducts" :key="product.id">
             <td class="product-id-content">{{ product.id }}</td>
             <td class="product-status-content">
-              <StatusBadge :text="'Status'" :badgeColor="getRandomColor()" />
+              <StatusBadge
+                :text="product.status || 'No Status'"
+                :badgeColor="
+                  statusColorMap[product.status.toLowerCase()] || 'violet'
+                "
+              />
             </td>
             <td class="product-quantity-content">{{ product.quantity }}</td>
             <td
@@ -171,10 +176,11 @@ const shownCount = computed(() => sortedFilteredProducts.value.length);
 // Array of colors
 const colors = ["red", "green", "yellow", "violet"];
 
-// Function to get a random color
-const getRandomColor = () => {
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
+const statusColorMap = {
+  "in stock": "green",
+  "out of stock": "red",
+  limited: "yellow",
+  preorder: "violet",
 };
 </script>
 

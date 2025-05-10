@@ -6,14 +6,16 @@
       "id": 1374,
       "quantity": 122,
       "total": 854.08,
-      "image": "https://superapple.cz/wp-content/uploads/2019/11/Apple_16-inch-MacBook-Pro_111319-800x445.jpg"
+      "image": "https://superapple.cz/wp-content/uploads/2019/11/Apple_16-inch-MacBook-Pro_111319-800x445.jpg",
+      "description": "This is a high-quality product perfect for daily use."
     },
     {
       "product": "Gaming Chair, local pickup only",
       "serial": "XP8619376",
       "id": 3933,
       "quantity": 245,
-      "total": 943.65
+      "total": 943.65,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "Macbook Air 13 inch(2020 ) For Sale",
@@ -21,7 +23,8 @@
       "id": 9374,
       "quantity": 134,
       "total": 779.58,
-      "image": "https://images.iphonemod.net/wp-content/uploads/2020/03/apple-released-new-macbook-air-13-inch-2020-2-1024x828.png"
+      "image": "https://images.iphonemod.net/wp-content/uploads/2020/03/apple-released-new-macbook-air-13-inch-2020-2-1024x828.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "Heimer Miller Sofa (Mint Condition)",
@@ -29,7 +32,8 @@
       "id": 5560,
       "quantity": 26,
       "total": 275.43,
-      "image": "https://www.pngall.com/wp-content/uploads/4/Sofa-PNG.png"
+      "image": "https://www.pngall.com/wp-content/uploads/4/Sofa-PNG.png",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "iPad Pro 2017 Model",
@@ -37,7 +41,8 @@
       "id": 6065,
       "quantity": 76,
       "total": 475.22,
-      "image": "https://brain-images-ssl.cdn.dixons.com/6/3/10165836/l_10165836_002.jpg"
+      "image": "https://brain-images-ssl.cdn.dixons.com/6/3/10165836/l_10165836_002.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "Gopro hero 7 (with receipt)",
@@ -45,7 +50,8 @@
       "id": 4349,
       "quantity": 47,
       "total": 219.78,
-      "image": "https://gadgetsin.com/uploads/2018/10/gopro_hero7_black_waterproof_4k_action_camera_1.jpg"
+      "image": "https://gadgetsin.com/uploads/2018/10/gopro_hero7_black_waterproof_4k_action_camera_1.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "Dell Computer Monitor",
@@ -53,7 +59,8 @@
       "id": 9359,
       "quantity": 54,
       "total": 105.55,
-      "image": "https://www.techpowerup.com/img/08-09-27/320-7339.jpg"
+      "image": "https://www.techpowerup.com/img/08-09-27/320-7339.jpg",
+      "description": ""
     },
     {
       "product": "AirPods Pro",
@@ -61,7 +68,8 @@
       "id": 8829,
       "quantity": 132,
       "total": 928.41,
-      "image": "https://scoprilamela.it/wp-content/uploads/2020/09/airpods-pro.jpg"
+      "image": "https://scoprilamela.it/wp-content/uploads/2020/09/airpods-pro.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     },
     {
       "product": "Playstation 4 Limited Edition",
@@ -69,7 +77,8 @@
       "serial": "TU23182451",
       "id": 5045,
       "quantity": 15,
-      "total": 473.85
+      "total": 473.85,
+      "description": ""
     },
     {
       "product": "DJI Mavic Pro 2",
@@ -77,7 +86,8 @@
       "id": 3536,
       "quantity": 39,
       "total": 576.28,
-      "image": "https://images.wired.it/wp-content/uploads/2016/09/28193850/1475077129_Dji-Mavic-Pro-.jpg"
+      "image": "https://images.wired.it/wp-content/uploads/2016/09/28193850/1475077129_Dji-Mavic-Pro-.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut ex est. Donec ut leo dui. Maecenas tempor, mauris lacinia mattis pulvinar, risus lorem vehicula urna, in hendrerit magna dolor sed mauris. Fusce pellentesque fermentum nulla ut ornare. Donec non tempor nunc, sit amet vestibulum sapien. Sed eu sagittis mauris"
     }
   ]
 }

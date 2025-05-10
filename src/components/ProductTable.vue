@@ -132,7 +132,6 @@ const toggleSort = (field) => {
 
 const toggleShowModal = (product) => {
   selectedProduct.value = product;
-  console.log("product", selectedProduct);
   showModal.value = true;
 };
 

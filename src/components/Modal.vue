@@ -2,6 +2,7 @@
   <div
     class="backdrop"
     role="dialog"
+    ref="backdrop"
     aria-modal="true"
     aria-labelledby="modal-title"
     aria-describedby="modal-description"
@@ -9,7 +10,7 @@
     @keydown.esc="emitClose"
     tabindex="0"
   >
-    <div class="modal" ref="modalContent">
+    <div class="modal">
       <div class="modal-container">
         <div class="modal-header">
           <h2 id="modal-title">{{ title }}</h2>
@@ -43,17 +44,15 @@ const props = defineProps({
   description: String,
   image: String,
 });
-console.log("title", props.title);
 
 const emit = defineEmits(["close"]);
 const emitClose = () => {
   emit("close");
 };
-
-const modalContent = ref(null);
+const backdrop = ref(null);
 
 onMounted(() => {
-  modalContent.value?.focus();
+  backdrop.value?.focus();
 });
 </script>
 

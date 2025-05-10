@@ -56,7 +56,7 @@
               :aria-label="`Product: ${product.product}, Serial: ${product.serial}`"
               class="product-name-content"
             >
-              <p class="product-name" @click="toggleShowModal">
+              <p class="product-name" @click="() => toggleShowModal(product)">
                 {{ product.product }}
               </p>
               <p class="serial">
@@ -73,9 +73,10 @@
     <!-- Modal -->
     <Modal
       v-if="showModal"
+      :title="selectedProduct?.product"
+      :description="selectedProduct?.description || 'No description data'"
+      :image="selectedProduct?.image || placeholderImage"
       @close="toggleModal"
-      header="Product Details"
-      content="More info about the selected product."
     />
   </div>
 </template>
@@ -99,11 +100,13 @@ const totalResults = ref(0);
 const sortBy = ref(null); // field name
 const sortOrder = ref("asc"); // 'asc' or 'desc'
 let showModal = ref(false);
+let selectedProduct = ref(null);
+const placeholderImage = "../assets/images/close.png";
 
 // Fetch products
 const fetchProductsData = async () => {
   try {
-    const response = await fetch("http://localhost:3000/products");
+    const response = await fetch("http://localhost:3001/products");
     if (!response.ok) {
       throw new Error("Error fetching data - " + response.status);
     }
@@ -127,9 +130,15 @@ const toggleSort = (field) => {
   }
 };
 
+const toggleShowModal = (product) => {
+  selectedProduct.value = product;
+  console.log("product", selectedProduct);
+  showModal.value = true;
+};
+
 const toggleModal = () => {
   showModal.value = !showModal.value;
-  console.log("showModel", showModal);
+  selectedProduct.value = null;
 };
 
 // Computed values

@@ -13,4 +13,8 @@ import ProductDashboardHeader from "../components/ProductDashboardHeader.vue";
 const search = ref("");
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.product-dashboard {
+  padding-bottom: 50px;
+}
+</style>

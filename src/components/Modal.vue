@@ -23,7 +23,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <img :src="image" :alt="title" />
+          <img :src="image || placeholderImage" :alt="title" />
           <p class="modal-description">{{ description }}</p>
         </div>
         <div class="modal-footer">
@@ -38,12 +38,15 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
+import noImage from "../assets/images/noimage.png";
 
 const props = defineProps({
   title: String,
   description: String,
   image: String,
 });
+
+const placeholderImage = noImage;
 
 const emit = defineEmits(["close"]);
 const emitClose = () => {

@@ -80,7 +80,7 @@
       v-if="showModal"
       :title="selectedProduct?.product"
       :description="selectedProduct?.description || 'No description data'"
-      :image="selectedProduct?.image || placeholderImage"
+      :image="selectedProduct?.image"
       @close="toggleModal"
     />
   </div>
@@ -106,7 +106,6 @@ const sortBy = ref(null); // field name
 const sortOrder = ref("asc"); // 'asc' or 'desc'
 let showModal = ref(false);
 let selectedProduct = ref(null);
-const placeholderImage = "../assets/images/close.png";
 
 // Fetch products
 const fetchProductsData = async () => {
